@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+ <title>Weather Scraper</title>
+ <meta charset="utf-8" />
+ <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+ <!--Bootstrap-->
+ <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+ 
+ 
+</head>
+<body>
+
+	<div class="container">
+
+		<div class="row">
+
+			<div id="heading" class="col-md-6 col-md-offset-3 center">
+
+			<h1 class="center">Weather Prediction</h1>
+			<p class="lead center">Enter your city for an accurate weather prediction</p>
+
+				<div class="form-group">
+
+					<input type="text" class="form-control" name="city" id="city" placeholder="Eg. London, Venice, Atlanta, Ho Chi Minh City...">
+
+				</div>
+
+				<button id="findMyWeather" class="btn btn-success btn-lg">Get Weather</button>
+				<button id="findLocalWeather" class="btn btn-success btn-lg">Get Your Local Weather</button>
+
+			<div id="success" class="alert alert-success"></div>
+			<div id="failure" class="alert alert-danger">Could not find weather data for that city. Please try again.</div>
+			<div id="noCity" class="alert alert-danger">Please enter a city</div>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		$('#success').hide();
+		$('#failure').hide();
+		$('#noCity').hide();
+
+		$('#findMyWeather').click(function(event) {
+
+			$('#success').hide();
+			$('#failure').hide();
+			$('#noCity').hide();
+
+			var $cityName = $('#city').val();
+
+			if (typeof $cityName === 'string' && $cityName.length > 0) {
+
+				$.get('/location?city=' + $cityName, function (data) {
+
+					if (data == "") {
+
+							$("#failure").fadeIn();
+
+						} else {
+
+							$("#success").html(data).fadeIn();
+							$("#success").prepend('<p id="cityTitle" class="lead">'+ $cityName +'</p>');
+
+						}
+
+				});
+
+			} else {
+
+				$("#noCity").fadeIn();
+
+			}
+		});
+
+		$('#findLocalWeather').click(function(event) {
+
+			$('#success').hide();
+			$('#failure').hide();
+			$('#noCity').hide();
+
+			$.get('/guessweather', function (data) {
+
+				if (data == "") {
+
+					$("#failure").fadeIn();
+
+				} else {
+
+					$("#success").html(data).fadeIn();
+
+				}
+
+			});
+
+		});
+
+
+
+	});
+
+	
+
+</script>
+
+</body>
+</html>
