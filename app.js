@@ -29,8 +29,6 @@
 
 	});
 
-	location().then()
-
 	app.get('/guessweather', function(req, res) {
 
 		location().then(function (guessedLocation) {

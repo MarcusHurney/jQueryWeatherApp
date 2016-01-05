@@ -1,0 +1,28 @@
+body {
+	background-image: url("weather-background.jpeg");
+}
+
+#heading {
+	padding-top: 100px;
+}
+
+#pageIntro {
+	color: white;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#pageIntro p {
+	font-size: 140%;
+}
+
+.marginTop {
+	margin-top: 20px;
+}
+
+#findMyWeather {
+	margin-right: 127px;
+}
+
+.middle {
+	text-align: center;
+}
