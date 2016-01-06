@@ -16,7 +16,7 @@ module.exports = function (location) {
 
 		request({url: url, json: true}, function (error, response, body) {
 			
-			if (error) {
+			if (error || body.cod === '404') {
 
 				return reject('Unable to fetch weather.');
 

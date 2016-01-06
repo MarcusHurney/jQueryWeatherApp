@@ -25,6 +25,10 @@
 
 			res.json(currentWeather);
 
+		}, function (error) {
+
+			res.status(404).json(error);
+			
 		});
 
 	});
