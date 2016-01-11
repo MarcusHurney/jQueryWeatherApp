@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 					$("#success").html(data).fadeIn();
 					$("#success").prepend('<p id="cityTitle" class="lead">'+ $cityName +'</p>');
-					$('#city').value = ""; //This doesn't seem to be working
+					$('#city').val(""); //This doesn't seem to be working
 
 				}).fail(function () {
 
