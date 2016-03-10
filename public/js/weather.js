@@ -6,7 +6,9 @@ module.exports = function (location) {
 
 		var encodedLocation = encodeURIComponent(location);
 
-		var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + encodedLocation + '&units=imperial&appid=2de143494c0b295cca9337e1e96b00e0';
+		var API_KEY = '4da55b76fff8900a19483e261af4a928';
+
+		var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + encodedLocation + '&units=imperial&appid=' + API_KEY;
 
 		if (!location) {
 

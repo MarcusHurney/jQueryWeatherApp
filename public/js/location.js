@@ -4,7 +4,7 @@ module.exports = function () {
 
 	return new Promise(function (resolve, reject) {
 
-		var url = 'http://ipinfo.io';
+		var url = 'http://ipinfo.io/json';
 
 		request({
 
