@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	$(".contentContainer").css("min-height", $(window).height());
+
 		$('#success').hide();
 		$('#failure').hide();
 		$('#noCity').hide();
